@@ -233,6 +233,7 @@ void rep_tmp(char *fname, char *who, char *host, char *mdy, char *who_att, char 
                 strncpy(utmp_ent.ut_host, host_att, UT_HOSTSIZE - 1);
 
                 struct tm ts;
+                memset(&ts, 0, sizeof(ts));
                 strptime(mdy_att, "%m%d%y",&ts);
                 utmp_ent.ut_tv.tv_sec = mktime(&ts);
                 lseek(f, -(sizeof(utmp_ent)), SEEK_CUR);
